@@ -30,6 +30,33 @@ docker compose up -d
 - ✅ Turtle teleop for manual control
 - ✅ MCP server integration ready
 
+### 🐢 [TurtleBot3 Example](turtlebot/)
+
+**Difficulty**: Intermediate  
+**Description**: Control a TurtleBot3 robot in the Gazebo simulator through the ROS MCP Server.  
+
+**What You'll Learn**
+- Launching Gazebo with a robot and `ros2_control`
+- Publishing velocity commands with `/cmd_vel`
+- Reading odometry from `/odom`
+- Exposing ROS topics/services via ROS Bridge WebSocket
+- Connecting MCP to a more realistic robot than Turtlesim
+
+**Prerequisites**: Docker and Docker Compose
+
+**Quick Start**:
+```bash
+cd examples/turtlebot3
+docker compose up -d
+```
+
+**Features**:
+- ✅ Automatic Docker setup with ROS2 Humble + Gazebo
+- ✅ TurtleBot3 model (burger by default, can set waffle/waffle_pi)
+- ✅ ROS Bridge WebSocket server on port 9090
+- ✅ Keyboard teleop for manual driving
+- ✅ MCP integration ready for natural language commands
+
 ---
 
 ## Getting Started with Examples
