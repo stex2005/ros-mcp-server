@@ -1,0 +1,22 @@
+services:
+  turtlebot3:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.turtlebot
+    container_name: ros2-turtlebot3
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - ROS_DISTRO=humble
+      - TURTLEBOT3_MODEL=burger
+      - ROS_DOMAIN_ID=42
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./docker/scripts:/ros2_ws/scripts:ro
+    devices:
+      - /dev/dri:/dev/dri   # << needed for hardware accel with Mesa/Intel
+    network_mode: host
+    stdin_open: true
+    tty: true
+    command: bash -c "/ros2_ws/scripts/launch_turtlebot.sh"
+
