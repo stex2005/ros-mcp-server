@@ -1,5 +1,5 @@
 version = 1
-revision = 4
+revision = 3
 requires-python = ">=3.10"
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'darwin'",
@@ -1213,7 +1213,7 @@ wheels = [
 
 [[package]]
 name = "ros-mcp-server"
-version = "0.2.0"
+version = "2.1.1"
 source = { virtual = "." }
 dependencies = [
     { name = "fastmcp" },

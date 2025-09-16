@@ -1141,12 +1141,19 @@ if __name__ == "__main__":
         # stdio doesn't need host/port
         mcp.run(transport="stdio")
 
-    elif MCP_TRANSPORT == "streamable-http":
-        # read host/port only for HTTP transport
+    elif MCP_TRANSPORT in {"http", "streamable-http"}:
+        # http and streamable-http both require host/port
         print(f"Transport: {MCP_TRANSPORT} -> http://{MCP_HOST}:{MCP_PORT}")
-        mcp.run(transport="streamable-http", host=MCP_HOST, port=MCP_PORT)
+        mcp.run(transport=MCP_TRANSPORT, host=MCP_HOST, port=MCP_PORT)
 
+    elif MCP_TRANSPORT == "sse":
+        print(f"Transport: {MCP_TRANSPORT} -> http://{MCP_HOST}:{MCP_PORT}")
+        print("Currently unsupported. "
+              "Use 'stdio', 'http', or 'streamable-http'.")
+        mcp.run(transport=MCP_TRANSPORT, host=MCP_HOST, port=MCP_PORT)
+    
     else:
         raise ValueError(
-            f"Unsupported MCP_TRANSPORT={MCP_TRANSPORT!r}. Use 'stdio' or 'streamable-http'."
+            f"Unsupported MCP_TRANSPORT={MCP_TRANSPORT!r}. "
+            "Use 'stdio', 'http', or 'streamable-http'."
         )
